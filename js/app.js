@@ -1,4 +1,4 @@
-// circlain_v2/js/app.js
+// circlan_v2/js/app.js
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Preloader Logic
