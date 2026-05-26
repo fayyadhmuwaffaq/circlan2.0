@@ -1,0 +1,146 @@
+/* circlain_v2/css/style.css */
+/* Custom utilities and animations complementing Tailwind */
+
+.glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-nav {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Instagram-style story border gradient */
+.story-gradient {
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+}
+
+/* Animations */
+.animate-fade-in {
+    animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(15px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* Interactive elements */
+.post-card {
+    /* Transitions removed for a static feel as requested */
+}
+
+.btn-scale {
+    transition: transform 0.1s ease-in-out;
+}
+
+/* Sidebar Desktop - Improved Centering */
+.sidebar-desktop {
+    width: 80px;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-x: hidden;
+    z-index: 60;
+}
+
+.sidebar-desktop:hover {
+    width: 260px;
+}
+
+.sidebar-desktop .nav-link-item {
+    display: flex;
+    align-items: center;
+    height: 52px;
+    margin: 4px 12px;
+    border-radius: 16px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.sidebar-desktop .icon-wrapper {
+    min-width: 56px; /* Width of the 'collapsed' interactive area minus margins */
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.sidebar-desktop .menu-text {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    font-weight: 600;
+}
+
+.sidebar-desktop:hover .menu-text {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Stable Content Area */
+.main-container-responsive {
+    transition: margin-left 0.3s ease;
+}
+
+@media (min-width: 768px) {
+    .main-container-responsive {
+        margin-left: 80px;
+    }
+}
+
+/* Original Style Post Interactions (Overlay) */
+.post-meta-overlay {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    display: flex;
+    gap: 8px;
+}
+
+.interaction-btn {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 12px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: all 0.2s ease;
+}
+
+.interaction-btn:active {
+    transform: scale(0.95);
+}
+
+.interaction-btn.bg-primary { background: #D9A05B; }
+.interaction-btn.bg-secondary { background: #F4EAE1; color: #D9A05B; }
+
+/* Icon specific alignment */
+.interaction-btn i {
+    font-size: 16px;
+    margin-right: 8px;
+}

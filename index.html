@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Circlan V2 - Home</title>
+    
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D9A05B',
+                        secondary: '#F4EAE1',
+                        dark: '#1a1a1a',
+                        surface: '#ffffff',
+                        muted: '#9ca3af'
+                    },
+                    backgroundImage: {
+                        'gradient-main': 'linear-gradient(180deg, #F4EAE1 0%, #FAFAFA 100%)',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Nunito Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'nav': '0 -1px 0 0 rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gradient-main bg-fixed font-sans min-h-screen pb-24 md:pb-0 overflow-x-hidden text-gray-800 antialiased selection:bg-primary selection:text-white">
+
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[100] bg-white flex items-center justify-center transition-opacity duration-500 ease-out">
+        <div class="relative w-16 h-16">
+            <div class="absolute inset-0 border-4 border-primary/20 rounded-full"></div>
+            <div class="absolute inset-0 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+        </div>
+    </div>
+
+    <!-- MOBILE HEADER -->
+    <header class="fixed top-0 left-0 right-0 z-40 glass h-16 flex md:hidden items-center px-5 justify-between">
+        <h1 class="text-xl font-bold text-dark tracking-tight italic">Circlain</h1>
+        <div class="flex items-center space-x-5">
+            <a href="notification.html" class="text-dark hover:text-primary transition-colors relative btn-scale">
+                <i class="fa-regular fa-bell text-xl"></i>
+                <span class="absolute -top-1 -right-1 bg-secondary text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full border-2 border-white">3</span>
+            </a>
+            <button id="menu-btn" class="text-dark hover:text-primary transition-colors btn-scale">
+                <i class="fa-solid fa-bars-staggered text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- DESKTOP DYNAMIC SIDEBAR -->
+    <nav class="hidden md:flex fixed top-0 left-0 h-screen sidebar-desktop bg-white border-r border-gray-100 flex-col py-8 shadow-sm">
+        <!-- Logo Section -->
+        <div class="mb-10 flex items-center h-[52px] px-6">
+            <h1 class="text-2xl font-bold text-dark tracking-tighter italic menu-text">Circlan</h1>
+        </div>
+
+        <!-- Main Nav Links -->
+        <div class="flex-1 space-y-2">
+            <!-- Home -->
+            <a href="index.html" class="nav-link-item bg-primary/10 text-primary group">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-house text-xl group-hover:scale-110 transition-transform"></i>
+                </div>
+                <span class="text-[16px] menu-text">Home</span>
+            </a>
+            <!-- Calendar -->
+            <a href="#" class="nav-link-item text-gray-500 hover:bg-gray-50 hover:text-dark group">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-calendar-days text-xl group-hover:scale-110 transition-transform"></i>
+                </div>
+                <span class="text-[16px] menu-text">Calendar</span>
+            </a>
+            <!-- Notification -->
+            <a href="notification.html" class="nav-link-item text-gray-500 hover:bg-gray-50 hover:text-dark group">
+                <div class="icon-wrapper relative">
+                    <i class="fa-regular fa-heart text-xl group-hover:scale-110 transition-transform"></i>
+                    <div class="absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full border border-white"></div>
+                </div>
+                <span class="text-[16px] menu-text">Notifications</span>
+            </a>
+            <!-- Create -->
+            <a href="#" class="nav-link-item text-gray-500 hover:bg-gray-50 hover:text-dark group">
+                <div class="icon-wrapper">
+                    <i class="fa-regular fa-square-plus text-xl group-hover:scale-110 transition-transform"></i>
+                </div>
+                <span class="text-[16px] menu-text">Create</span>
+            </a>
+            <!-- Tree -->
+            <a href="#" class="nav-link-item text-gray-500 hover:bg-gray-50 hover:text-dark group">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-sitemap text-xl group-hover:scale-110 transition-transform"></i>
+                </div>
+                <span class="text-[16px] menu-text">Tree</span>
+            </a>
+            <!-- Profile -->
+            <a href="profile.html" class="nav-link-item text-gray-500 hover:bg-gray-50 hover:text-dark group">
+                <div class="icon-wrapper">
+                    <div class="w-7 h-7 rounded-full overflow-hidden border border-gray-300 group-hover:scale-110 transition-transform shadow-sm">
+                        <img src="images/stories/small/pic1.jpg" alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <span class="text-[16px] menu-text">Profile</span>
+            </a>
+        </div>
+
+        <!-- Footer / More -->
+        <div class="mt-auto">
+            <a href="#" class="nav-link-item text-gray-400 hover:bg-gray-50 hover:text-dark group">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-bars text-xl group-hover:scale-110 transition-transform"></i>
+                </div>
+                <span class="text-[16px] menu-text">More</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Sidebar Overlay (Mobile only) -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/40 z-50 hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm"></div>
+
+    <!-- Mobile Drawer -->
+    <aside id="sidebar" class="fixed top-0 right-0 h-full w-72 bg-white z-[60] transform translate-x-full transition-transform duration-300 cubic-bezier(0.4, 0, 0.2, 1) shadow-2xl overflow-y-auto">
+        <div class="p-6">
+            <div class="flex items-center space-x-4 mb-10 pb-6 border-b border-gray-100">
+                <img src="images/stories/small/pic1.jpg" alt="Profile" class="w-14 h-14 rounded-2xl object-cover shadow-sm">
+                <div>
+                    <span class="text-xs text-muted font-medium">Good Morning</span>
+                    <h2 class="font-bold text-lg text-dark">Emilla</h2>
+                </div>
+            </div>
+            <nav class="space-y-2">
+                <p class="text-xs font-bold text-gray-300 uppercase tracking-widest mb-4 px-2">Account</p>
+                <a href="#" class="flex items-center space-x-4 px-4 py-3 rounded-2xl text-gray-500 hover:bg-gray-50 font-medium transition-colors">
+                    <i class="fa-solid fa-gear w-6 text-center text-lg"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="flex items-center space-x-4 px-4 py-3 rounded-2xl text-gray-500 hover:bg-gray-50 font-medium transition-colors">
+                    <i class="fa-solid fa-shield-halved w-6 text-center text-lg"></i>
+                    <span>Privacy</span>
+                </a>
+            </nav>
+            <div class="absolute bottom-6 left-0 right-0 text-center">
+                <p class="text-[10px] text-gray-400 font-medium">Circlan V2 &copy; 2026</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Container -->
+    <div class="main-container-responsive">
+        <main class="pt-20 md:pt-10 px-4 max-w-[600px] xl:max-w-[700px] mx-auto min-h-screen">
+            
+            <!-- Story Section -->
+            <div class="mb-8 overflow-x-auto hide-scrollbar flex space-x-4 pb-2 snap-x snap-mandatory">
+                <!-- Add Story -->
+                <div class="flex-shrink-0 flex flex-col items-center space-y-2 snap-start">
+                    <div class="relative btn-scale cursor-pointer">
+                        <div class="w-[64px] md:w-[68px] h-[64px] md:h-[68px] rounded-2xl border-2 border-white shadow-sm overflow-hidden">
+                            <img src="images/stories/small/pic8.jpg" alt="Your Story" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-1 -right-1 bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                        </div>
+                    </div>
+                    <span class="text-[11px] font-semibold text-gray-500">Your Story</span>
+                </div>
+
+                <!-- Live Story -->
+                <div class="flex-shrink-0 flex flex-col items-center space-y-2 snap-start">
+                    <div class="relative btn-scale cursor-pointer">
+                        <div class="w-[64px] md:w-[68px] h-[64px] md:h-[68px] rounded-2xl story-gradient p-[2px] shadow-md shadow-secondary/20">
+                            <div class="w-full h-full bg-white rounded-[14px] p-[2px]">
+                                <img src="images/stories/small/pic1.jpg" alt="Emilia" class="w-full h-full object-cover rounded-xl">
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-red-500 text-white text-[9px] px-2 py-[2px] rounded-md font-bold uppercase tracking-wide border-2 border-white">
+                            Live
+                        </div>
+                    </div>
+                    <span class="text-[11px] font-semibold text-dark mt-1">Emilia</span>
+                </div>
+
+                <script>
+                    const storyImages = [2, 3, 4, 5, 6, 7];
+                    const storyNames = ['Richard', 'Jasmine', 'Lucas', 'Hendri', 'Carla', 'Jermy'];
+                    storyImages.forEach((num, index) => {
+                        document.write(`
+                            <div class="flex-shrink-0 flex flex-col items-center space-y-2 snap-start">
+                                <div class="relative btn-scale cursor-pointer">
+                                    <div class="w-[64px] md:w-[68px] h-[64px] md:h-[68px] rounded-2xl bg-gray-200 p-[2px]">
+                                        <div class="w-full h-full bg-white rounded-[14px] p-[2px]">
+                                            <img src="images/stories/small/pic${num}.jpg" alt="${storyNames[index]}" class="w-full h-full object-cover rounded-xl">
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="text-[11px] font-medium text-gray-500">${storyNames[index]}</span>
+                            </div>
+                        `);
+                    });
+                </script>
+            </div>
+
+            <!-- Feed Area (Matching Original Design) -->
+            <div class="space-y-8">
+                
+                <!-- Post Card 1 -->
+                <article class="bg-white rounded-3xl overflow-hidden shadow-sm animate-fade-in border border-gray-100">
+                    <!-- Top Meta -->
+                    <div class="p-4 flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl overflow-hidden shadow-sm">
+                                <img src="images/stories/small/pic4.jpg" alt="Lucas" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-dark leading-tight">Lucas Mokmana</h3>
+                                <div class="flex items-center text-[11px] text-gray-400 font-medium">
+                                    <i class="fa-solid fa-location-dot mr-1"></i> Bangkok, Thailand
+                                    <span class="mx-1.5">&bull;</span>
+                                    2m ago
+                                </div>
+                            </div>
+                        </div>
+                        <button class="text-gray-300 hover:text-dark transition-colors">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </button>
+                    </div>
+
+                    <!-- Post Text -->
+                    <div class="px-4 pb-4">
+                        <p class="text-sm text-gray-800 leading-relaxed">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do sum sit emat 😎😎
+                        </p>
+                    </div>
+
+                    <!-- Media with Overlays -->
+                    <div class="relative group">
+                        <img src="images/post/pic1.png" alt="Post content" class="w-full aspect-square object-cover">
+                        
+                        <!-- Floating Buttons (Overlay) -->
+                        <div class="post-meta-overlay">
+                            <button class="interaction-btn bg-primary btn-scale btn-like">
+                                <i class="fa-regular fa-heart"></i>
+                                <span class="like-count">221</span>
+                            </button>
+                            <a href="comment.html" class="interaction-btn bg-secondary btn-scale">
+                                <i class="fa-solid fa-comment"></i>
+                                <span>150</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post Card 2 -->
+                <article class="bg-white rounded-3xl overflow-hidden shadow-sm animate-fade-in border border-gray-100" style="animation-delay: 0.1s">
+                    <!-- Top Meta -->
+                    <div class="p-4 flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl overflow-hidden shadow-sm">
+                                <img src="images/stories/small/pic6.jpg" alt="Hendri" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-dark leading-tight">Hendri Lee</h3>
+                                <div class="flex items-center text-[11px] text-gray-400 font-medium">
+                                    <i class="fa-solid fa-location-dot mr-1"></i> Shibuya, Japan
+                                    <span class="mx-1.5">&bull;</span>
+                                    15m ago
+                                </div>
+                            </div>
+                        </div>
+                        <button class="text-gray-300 hover:text-dark transition-colors">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </button>
+                    </div>
+
+                    <!-- Post Text -->
+                    <div class="px-4 pb-4">
+                        <p class="text-sm text-gray-800 leading-relaxed">
+                            Night lights in Tokyo. Never ceases to amaze me. 🏮✨ #tokyo #shibuya
+                        </p>
+                    </div>
+
+                    <!-- Media with Overlays -->
+                    <div class="relative group">
+                        <img src="images/post/pic2.png" alt="Post content" class="w-full aspect-[4/3] object-cover">
+                        
+                        <!-- Floating Buttons (Overlay) -->
+                        <div class="post-meta-overlay">
+                            <button class="interaction-btn bg-primary btn-scale btn-like">
+                                <i class="fa-solid fa-heart text-white"></i>
+                                <span class="like-count">542</span>
+                            </button>
+                            <a href="comment.html" class="interaction-btn bg-secondary btn-scale">
+                                <i class="fa-solid fa-comment"></i>
+                                <span>89</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Catch up message -->
+                <div class="text-center py-10">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-gray-200 text-gray-400 mb-3">
+                        <i class="fa-solid fa-check text-xl"></i>
+                    </div>
+                    <p class="text-sm font-bold text-dark">You're all caught up!</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <nav class="fixed bottom-0 left-0 right-0 glass-nav px-6 py-3 flex md:hidden items-center justify-between z-40 shadow-nav">
+        <a href="index.html" class="text-dark btn-scale"><i class="fa-solid fa-house text-2xl"></i></a>
+        <a href="#" class="text-gray-400 btn-scale"><i class="fa-solid fa-calendar-days text-2xl"></i></a>
+        <a href="#" class="text-gray-400 btn-scale"><i class="fa-regular fa-square-plus text-2xl"></i></a>
+        <a href="#" class="text-gray-400 btn-scale"><i class="fa-solid fa-sitemap text-2xl"></i></a>
+        <a href="profile.html" class="text-gray-400 btn-scale">
+            <img src="images/stories/small/pic1.jpg" alt="Profile" class="w-7 h-7 rounded-full border border-gray-200">
+        </a>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

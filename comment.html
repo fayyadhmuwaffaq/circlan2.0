@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Circlan V2 - Comments</title>
+    
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D9A05B',
+                        secondary: '#F4EAE1',
+                        dark: '#1a1a1a',
+                        surface: '#ffffff',
+                        muted: '#9ca3af'
+                    },
+                    backgroundImage: {
+                        'gradient-main': 'linear-gradient(180deg, #F4EAE1 0%, #FAFAFA 100%)',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Nunito Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'nav': '0 -1px 0 0 rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-white font-sans min-h-screen overflow-x-hidden text-gray-800 antialiased selection:bg-primary selection:text-white">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-md h-16 flex items-center px-5 border-b border-gray-100">
+        <a href="index.html" class="w-10 h-10 flex items-center justify-center text-dark hover:text-primary transition-colors btn-scale">
+            <i class="fa-solid fa-arrow-left text-xl"></i>
+        </a>
+        <h1 class="text-lg font-bold text-dark ml-2">Comments</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-16 pb-24 px-5 max-w-lg mx-auto min-h-screen">
+        
+        <!-- OP (Original Post) Context - Optional but good for UX -->
+        <div class="py-6 border-b border-gray-50 flex items-start space-x-3">
+            <img src="images/stories/small/pic4.jpg" alt="Lucas" class="w-10 h-10 rounded-full object-cover">
+            <div>
+                <p class="text-sm">
+                    <span class="font-bold mr-1">Lucas Mokmana</span>
+                    Exploring the vibrant streets of Bangkok! The food here is absolutely incredible. 😎🇹🇭
+                </p>
+                <span class="text-[11px] text-muted font-medium mt-1 inline-block">2h</span>
+            </div>
+        </div>
+
+        <!-- Comments List -->
+        <div class="mt-6 space-y-6">
+            
+            <!-- Comment Item 1 -->
+            <div class="flex items-start space-x-3 group">
+                <img src="images/stories/small/pic1.jpg" alt="User" class="w-9 h-9 rounded-full object-cover">
+                <div class="flex-1">
+                    <div class="flex items-baseline space-x-2">
+                        <span class="font-bold text-sm">emilia_green</span>
+                        <span class="text-[11px] text-muted">1h</span>
+                    </div>
+                    <p class="text-[13px] text-gray-700 mt-0.5 leading-relaxed">
+                        Wow! Bangkok looks amazing. Which street market was this? I need to go there! 😍
+                    </p>
+                    <div class="flex items-center space-x-4 mt-2">
+                        <button class="text-[11px] font-bold text-muted hover:text-primary transition-colors">Reply</button>
+                        <button class="text-[11px] font-bold text-muted hover:text-primary transition-colors">Send</button>
+                    </div>
+
+                    <!-- Replies Thread -->
+                    <div class="mt-4 pl-4 border-l-2 border-gray-100 space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <img src="images/stories/small/pic4.jpg" alt="User" class="w-6 h-6 rounded-full object-cover">
+                            <div class="flex-1">
+                                <p class="text-[13px] text-gray-700">
+                                    <span class="font-bold mr-1">lucas_mokmana</span> It's the Jodd Fairs DanNeramit! Highly recommend the grilled squid.
+                                </p>
+                                <span class="text-[10px] text-muted font-medium mt-1 inline-block">45m</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="text-muted hover:text-red-500 transition-colors pt-1 btn-scale">
+                    <i class="fa-regular fa-heart text-xs"></i>
+                </button>
+            </div>
+
+            <!-- Comment Item 2 -->
+            <div class="flex items-start space-x-3">
+                <img src="images/stories/small/pic2.jpg" alt="User" class="w-9 h-9 rounded-full object-cover">
+                <div class="flex-1">
+                    <div class="flex items-baseline space-x-2">
+                        <span class="font-bold text-sm">richard_lee</span>
+                        <span class="text-[11px] text-muted">50m</span>
+                    </div>
+                    <p class="text-[13px] text-gray-700 mt-0.5 leading-relaxed">
+                        Save some food for me bro! Haha safe travels.
+                    </p>
+                    <div class="flex items-center space-x-4 mt-2">
+                        <button class="text-[11px] font-bold text-muted">Reply</button>
+                    </div>
+                </div>
+                <button class="text-red-500 pt-1 btn-scale">
+                    <i class="fa-solid fa-heart text-xs"></i>
+                </button>
+            </div>
+
+            <!-- Comment Item 3 -->
+            <div class="flex items-start space-x-3">
+                <img src="images/stories/small/pic6.jpg" alt="User" class="w-9 h-9 rounded-full object-cover">
+                <div class="flex-1">
+                    <div class="flex items-baseline space-x-2">
+                        <span class="font-bold text-sm">hendri_lee</span>
+                        <span class="text-[11px] text-muted">10m</span>
+                    </div>
+                    <p class="text-[13px] text-gray-700 mt-0.5 leading-relaxed">
+                        The colors in this photo are just brilliant. What camera are you using?
+                    </p>
+                    <div class="flex items-center space-x-4 mt-2">
+                        <button class="text-[11px] font-bold text-muted">Reply</button>
+                    </div>
+                </div>
+                <button class="text-muted hover:text-red-500 transition-colors pt-1">
+                    <i class="fa-regular fa-heart text-xs"></i>
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Bottom Input Bar -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-100 p-4 max-w-lg mx-auto">
+        <!-- Emoji Quick Bar -->
+        <div class="flex items-center justify-between mb-3 px-2">
+            <button class="text-xl hover:scale-125 transition-transform">❤️</button>
+            <button class="text-xl hover:scale-125 transition-transform">🙌</button>
+            <button class="text-xl hover:scale-125 transition-transform">🔥</button>
+            <button class="text-xl hover:scale-125 transition-transform">👏</button>
+            <button class="text-xl hover:scale-125 transition-transform">😢</button>
+            <button class="text-xl hover:scale-125 transition-transform">😍</button>
+            <button class="text-xl hover:scale-125 transition-transform">😮</button>
+            <button class="text-xl hover:scale-125 transition-transform">😂</button>
+        </div>
+        
+        <div class="flex items-center space-x-3">
+            <img src="images/stories/small/pic1.jpg" alt="My Profile" class="w-10 h-10 rounded-full object-cover">
+            <div class="flex-1 relative">
+                <input type="text" placeholder="Add a comment..." class="w-full bg-gray-100 border-none rounded-full py-2.5 px-4 pr-12 text-sm focus:ring-2 focus:ring-primary/20 transition-all outline-none">
+                <button class="absolute right-3 top-1/2 -translate-y-1/2 text-primary font-bold text-sm hover:text-dark transition-colors disabled:opacity-50">
+                    Post
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script>
+        // Simple logic for the input animation
+        const input = document.querySelector('input');
+        const postBtn = document.querySelector('button[class*="text-primary"]');
+        
+        input.addEventListener('input', (e) => {
+            if (e.target.value.trim().length > 0) {
+                postBtn.disabled = false;
+                postBtn.style.opacity = '1';
+            } else {
+                postBtn.disabled = true;
+                postBtn.style.opacity = '0.5';
+            }
+        });
+    </script>
+</body>
+</html>
