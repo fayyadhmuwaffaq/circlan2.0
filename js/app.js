@@ -72,4 +72,32 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // 4. Generic Dropdown Logic (Handles Circle Filter and Post Dropdowns)
+    document.addEventListener('click', (e) => {
+        // Handle all dropdown toggles
+        const toggleBtn = e.target.closest('[id$="-btn"], .post-dropdown-btn');
+        if (toggleBtn) {
+            e.stopPropagation();
+            
+            // Find the closest menu related to this button
+            const menu = toggleBtn.nextElementSibling || toggleBtn.parentElement.querySelector('[id$="-menu"], .post-dropdown-menu');
+            
+            if (menu) {
+                // Close other open menus first
+                document.querySelectorAll('[id$="-menu"], .post-dropdown-menu').forEach(m => {
+                    if (m !== menu) m.classList.add('hidden');
+                });
+                menu.classList.toggle('hidden');
+            }
+            return;
+        }
+
+        // Close all menus when clicking outside
+        if (!e.target.closest('[id$="-menu"], .post-dropdown-menu')) {
+            document.querySelectorAll('[id$="-menu"], .post-dropdown-menu').forEach(menu => {
+                menu.classList.add('hidden');
+            });
+        }
+    });
 });
