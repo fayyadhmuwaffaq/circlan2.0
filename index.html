@@ -60,7 +60,6 @@
         <div class="flex items-center space-x-5">
             <a href="notification.html" class="text-dark hover:text-primary transition-colors relative btn-scale">
                 <i class="fa-regular fa-heart text-xl"></i>
-                <span class="absolute -top-1 -right-1 bg-secondary text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full border-2 border-white">3</span>
             </a>
             <button id="menu-btn" class="text-dark hover:text-primary transition-colors btn-scale">
                 <i class="fa-solid fa-bars-staggered text-xl"></i>
@@ -146,7 +145,54 @@
             <!-- Events Section (Text-Only Minimalist) -->
             <div class="mb-8">
                 <div class="flex items-center justify-between mb-4 px-1">
-                    <h3 class="text-sm font-bold text-dark uppercase tracking-wider">Upcoming Events</h3>
+                    <h3 class="text-sm font-bold text-dark uppercase tracking-wider whitespace-nowrap">Upcoming Events</h3>
+                    
+                    <!-- Circle Filter Dropdown -->
+                    <div class="relative inline-block text-left" id="circle-filter-dropdown">
+                        <button type="button" id="filter-btn" class="flex items-center space-x-1 bg-white border border-gray-200 px-3 py-1.5 rounded-xl text-[11px] font-bold text-dark hover:border-primary transition-all shadow-sm">
+                            <i class="fa-solid fa-filter text-primary"></i>
+                            <span class="hidden sm:inline">Circle</span>
+                            <i class="fa-solid fa-chevron-down text-[8px] text-muted"></i>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div id="filter-menu" class="hidden absolute right-0 mt-2 w-64 origin-top-right rounded-2xl bg-white shadow-xl ring-1 ring-black ring-opacity-5 focus:outline-none z-50 p-2 border border-gray-100 animate-fade-in">
+                            <div class="py-1 space-y-1">
+                                <label class="flex items-center justify-between px-3 py-2 text-[13px] font-semibold text-dark hover:bg-secondary/30 rounded-xl cursor-pointer transition-colors group">
+                                    <span>All Circle</span>
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary" checked>
+                                </label>
+                                <label class="flex items-center justify-between px-3 py-2 text-[13px] font-medium text-gray-700 hover:bg-secondary/30 rounded-xl cursor-pointer transition-colors group">
+                                    <span>My Circle</span>
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary">
+                                </label>
+                                <label class="flex items-center justify-between px-3 py-2 text-[13px] font-medium text-gray-700 hover:bg-secondary/30 rounded-xl cursor-pointer transition-colors group">
+                                    <span>Circle Ayahku</span>
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary">
+                                </label>
+                                <label class="flex items-center justify-between px-3 py-2 text-[13px] font-medium text-gray-700 hover:bg-secondary/30 rounded-xl cursor-pointer transition-colors group">
+                                    <span>Circle Ibuku</span>
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary">
+                                </label>
+                                <label class="flex items-center justify-between px-3 py-2 text-[13px] font-medium text-gray-700 hover:bg-secondary/30 rounded-xl cursor-pointer transition-colors group">
+                                    <span>Ayah dari Ayahku</span>
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary">
+                                </label>
+                                <label class="flex items-center justify-between px-3 py-2 text-[13px] font-medium text-gray-700 hover:bg-secondary/30 rounded-xl cursor-pointer transition-colors group">
+                                    <span>Ibu dari Ayahku</span>
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary">
+                                </label>
+                                <label class="flex items-center justify-between px-3 py-2 text-[13px] font-medium text-gray-700 hover:bg-secondary/30 rounded-xl cursor-pointer transition-colors group">
+                                    <span>Ayah dari Ibuku</span>
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary">
+                                </label>
+                                <label class="flex items-center justify-between px-3 py-2 text-[13px] font-medium text-gray-700 hover:bg-secondary/30 rounded-xl cursor-pointer transition-colors group">
+                                    <span>Ibu dari Ibuku</span>
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="flex overflow-x-auto hide-scrollbar space-x-4 pb-4 snap-x snap-mandatory px-1">
@@ -205,6 +251,58 @@
 
             <!-- Feed Area -->
             <div class="space-y-8">
+                <div class="flex items-center justify-between mb-4 px-1">
+                    <h3 class="text-sm font-bold text-dark uppercase tracking-wider">Feed</h3>
+                    
+                    <!-- Post Circle Filter Dropdown -->
+                    <div class="relative inline-block text-left" id="post-filter-dropdown">
+                        <button type="button" id="post-filter-btn" class="flex items-center space-x-1 bg-white border border-gray-200 px-3 py-1.5 rounded-xl text-[11px] font-bold text-dark hover:border-primary transition-all shadow-sm">
+                            <i class="fa-solid fa-users text-primary"></i>
+                            <span class="hidden sm:inline">Circle</span>
+                            <i class="fa-solid fa-chevron-down text-[8px] text-muted"></i>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div id="post-filter-menu" class="hidden absolute right-0 mt-2 w-64 origin-top-right rounded-2xl bg-white shadow-xl ring-1 ring-black ring-opacity-5 focus:outline-none z-50 p-2 border border-gray-100 animate-fade-in">
+                            <div class="py-1 space-y-1">
+                                <label class="flex items-center justify-between px-3 py-2 text-[13px] font-semibold text-dark hover:bg-secondary/30 rounded-xl cursor-pointer transition-colors group">
+                                    <span>All Circle</span>
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary" checked>
+                                </label>
+                                <div class="h-px bg-gray-100 mx-2 my-1"></div>
+                                <label class="flex items-center justify-between px-3 py-2 text-[13px] font-medium text-gray-700 hover:bg-secondary/30 rounded-xl cursor-pointer transition-colors group">
+                                    <span>My Circle</span>
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary">
+                                </label>
+                                <label class="flex items-center justify-between px-3 py-2 text-[13px] font-medium text-gray-700 hover:bg-secondary/30 rounded-xl cursor-pointer transition-colors group">
+                                    <span>Circle Ayahku</span>
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary">
+                                </label>
+                                <label class="flex items-center justify-between px-3 py-2 text-[13px] font-medium text-gray-700 hover:bg-secondary/30 rounded-xl cursor-pointer transition-colors group">
+                                    <span>Circle Ibuku</span>
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary">
+                                </label>
+                                <label class="flex items-center justify-between px-3 py-2 text-[13px] font-medium text-gray-700 hover:bg-secondary/30 rounded-xl cursor-pointer transition-colors group">
+                                    <span>Ayah dari Ayahku</span>
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary">
+                                </label>
+                                <label class="flex items-center justify-between px-3 py-2 text-[13px] font-medium text-gray-700 hover:bg-secondary/30 rounded-xl cursor-pointer transition-colors group">
+                                    <span>Ibu dari Ayahku</span>
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary">
+                                </label>
+                                <label class="flex items-center justify-between px-3 py-2 text-[13px] font-medium text-gray-700 hover:bg-secondary/30 rounded-xl cursor-pointer transition-colors group">
+                                    <span>Ayah dari Ibuku</span>
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary">
+                                </label>
+                                <label class="flex items-center justify-between px-3 py-2 text-[13px] font-medium text-gray-700 hover:bg-secondary/30 rounded-xl cursor-pointer transition-colors group">
+                                    <span>Ibu dari Ibuku</span>
+                                    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Post Card 1 -->
                 <article class="bg-white rounded-3xl overflow-hidden shadow-sm animate-fade-in border border-gray-100">
                     <div class="p-4 flex items-center justify-between">
@@ -221,9 +319,28 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="text-gray-300 hover:text-dark transition-colors">
-                            <i class="fa-solid fa-share-nodes"></i>
-                        </button>
+                        <div class="relative inline-block text-left post-dropdown">
+                            <button type="button" class="post-dropdown-btn text-gray-300 hover:text-dark transition-colors p-2 rounded-full hover:bg-gray-50">
+                                <i class="fa-solid fa-ellipsis-vertical text-xl"></i>
+                            </button>
+                            <!-- Dropdown Menu -->
+                            <div class="post-dropdown-menu hidden absolute right-0 mt-2 w-48 origin-top-right rounded-2xl bg-white shadow-xl ring-1 ring-black ring-opacity-5 z-50 p-2 border border-gray-100 animate-fade-in">
+                                <div class="py-1">
+                                    <a href="#" class="flex items-center px-4 py-2 text-[13px] text-gray-700 hover:bg-secondary/30 rounded-xl transition-colors group">
+                                        <i class="fa-solid fa-share-nodes mr-3 text-primary"></i>
+                                        <span>Bagikan</span>
+                                    </a>
+                                    <a href="#" class="flex items-center px-4 py-2 text-[13px] text-gray-700 hover:bg-secondary/30 rounded-xl transition-colors group">
+                                        <i class="fa-solid fa-link mr-3 text-primary"></i>
+                                        <span>Salin Tautan</span>
+                                    </a>
+                                    <a href="#" class="flex items-center px-4 py-2 text-[13px] text-red-500 hover:bg-red-50 rounded-xl transition-colors group font-bold">
+                                        <i class="fa-solid fa-circle-exclamation mr-3"></i>
+                                        <span>Laporkan</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="px-4 pb-4">
                         <p class="text-sm text-gray-800 leading-relaxed">Exploring the vibrant streets of Bangkok! The food here is absolutely incredible. 😎🇹🇭</p>
@@ -259,9 +376,28 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="text-gray-300 hover:text-dark transition-colors">
-                            <i class="fa-solid fa-share-nodes"></i>
-                        </button>
+                        <div class="relative inline-block text-left post-dropdown">
+                            <button type="button" class="post-dropdown-btn text-gray-300 hover:text-dark transition-colors p-2 rounded-full hover:bg-gray-50">
+                                <i class="fa-solid fa-ellipsis-vertical text-xl"></i>
+                            </button>
+                            <!-- Dropdown Menu -->
+                            <div class="post-dropdown-menu hidden absolute right-0 mt-2 w-48 origin-top-right rounded-2xl bg-white shadow-xl ring-1 ring-black ring-opacity-5 z-50 p-2 border border-gray-100 animate-fade-in">
+                                <div class="py-1">
+                                    <a href="#" class="flex items-center px-4 py-2 text-[13px] text-gray-700 hover:bg-secondary/30 rounded-xl transition-colors group">
+                                        <i class="fa-solid fa-share-nodes mr-3 text-primary"></i>
+                                        <span>Bagikan</span>
+                                    </a>
+                                    <a href="#" class="flex items-center px-4 py-2 text-[13px] text-gray-700 hover:bg-secondary/30 rounded-xl transition-colors group">
+                                        <i class="fa-solid fa-link mr-3 text-primary"></i>
+                                        <span>Salin Tautan</span>
+                                    </a>
+                                    <a href="#" class="flex i tems-center px-4 py-2 text-[13px] text-red-500 hover:bg-red-50 rounded-xl transition-colors group font-bold">
+                                        <i class="fa-solid fa-circle-exclamation mr-3"></i>
+                                        <span>Laporkan</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="px-4 pb-4">
                         <p class="text-sm text-gray-800 leading-relaxed">Night lights in Tokyo. Never ceases to amaze me. 🏮✨ #tokyo #shibuya</p>
@@ -293,7 +429,10 @@
 
     <!-- MOBILE BOTTOM NAVIGATION -->
     <nav class="fixed bottom-0 left-0 right-0 glass-nav px-6 py-3 flex md:hidden items-center justify-between z-40 shadow-nav">
-        <a href="index.html" class="text-dark btn-scale"><i class="fa-solid fa-house text-2xl"></i></a>
+        <a href="index.html" class="text-primary btn-scale relative">
+            <i class="fa-solid fa-house text-2xl"></i>
+            <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full"></div>
+        </a>
         <a href="calendar.html" class="text-gray-400 btn-scale"><i class="fa-solid fa-calendar-days text-2xl"></i></a>
         <a href="#" class="text-gray-400 btn-scale"><i class="fa-regular fa-square-plus text-2xl"></i></a>
         <a href="#" class="text-gray-400 btn-scale"><i class="fa-solid fa-sitemap text-2xl"></i></a>
