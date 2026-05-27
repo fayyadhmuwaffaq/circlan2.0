@@ -100,13 +100,44 @@
                 <span class="text-[16px] menu-text">Profile</span>
             </a>
         </div>
-        <div class="mt-auto">
-            <a href="#" class="nav-link-item text-gray-400 hover:bg-gray-50 hover:text-dark group">
+        <!-- Desktop Sidebar Footer -->
+        <div class="mt-auto relative" id="more-dropdown-container">
+            <button type="button" id="more-btn" class="w-full nav-link-item text-gray-400 hover:bg-gray-50 hover:text-dark group transition-all">
                 <div class="icon-wrapper">
                     <i class="fa-solid fa-bars text-xl group-hover:scale-110 transition-transform"></i>
                 </div>
-                <span class="text-[16px] menu-text">More</span>
-            </a>
+                <span class="text-[16px] font-semibold menu-text">More</span>
+            </button>
+
+            <!-- More Dropdown Menu -->
+            <div id="more-menu" class="hidden absolute bottom-full left-0 mb-4 w-64 origin-bottom-left rounded-2xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 z-50 p-2 border border-gray-100 animate-fade-in">
+                <div class="py-1 space-y-1">
+                    <a href="#" class="flex items-center px-4 py-3 text-[13px] font-bold text-gray-700 hover:bg-secondary/30 rounded-xl transition-colors group">
+                        <i class="fa-solid fa-gear mr-4 w-5 text-center text-lg text-primary"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-3 text-[13px] font-bold text-gray-700 hover:bg-secondary/30 rounded-xl transition-colors group">
+                        <i class="fa-solid fa-clock-rotate-left mr-4 w-5 text-center text-lg text-primary"></i>
+                        <span>Your Activity</span>
+                    </a>
+                    <a href="calendar.html" class="flex items-center px-4 py-3 text-[13px] font-bold text-gray-700 hover:bg-secondary/30 rounded-xl transition-colors group">
+                        <i class="fa-solid fa-bookmark mr-4 w-5 text-center text-lg text-primary"></i>
+                        <span>Saved Events</span>
+                    </a>
+                    <button class="w-full flex items-center px-4 py-3 text-[13px] font-bold text-gray-700 hover:bg-secondary/30 rounded-xl transition-colors group">
+                        <i class="fa-solid fa-moon mr-4 w-5 text-center text-lg text-primary"></i>
+                        <span>Switch Appearance</span>
+                    </button>
+                    <div class="h-px bg-gray-100 mx-2 my-1"></div>
+                    <a href="#" class="flex items-center px-4 py-3 text-[13px] font-bold text-gray-700 hover:bg-secondary/30 rounded-xl transition-colors group">
+                        <span>Report a problem</span>
+                    </a>
+                    <div class="h-[6px] bg-gray-50 mx-[-8px] my-1"></div>
+                    <a href="login.html" class="flex items-center px-4 py-3 text-[13px] font-black text-red-500 hover:bg-red-50 rounded-xl transition-colors group">
+                        <span>Log out</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -156,7 +187,7 @@
                 </div>
             </div>
 
-            <!-- CREATE EVENT SECTION (Hidden by default) -->
+            <!-- CREATE EVENT SECTION -->
             <div id="section-event" class="hidden animate-fade-in">
                 <div class="bg-white rounded-[32px] p-6 shadow-soft border border-gray-50 space-y-6">
                     <div>
@@ -215,6 +246,53 @@
             <img src="images/stories/small/pic9.jpg" alt="Profile" class="w-7 h-7 rounded-full border border-gray-200">
         </a>
     </nav>
+
+    <!-- Sidebar Overlay (Mobile only) -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/40 z-50 hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm"></div>
+
+    <!-- Mobile Drawer -->
+    <aside id="sidebar" class="fixed top-0 right-0 h-full w-72 bg-white z-[60] transform translate-x-full transition-transform duration-300 cubic-bezier(0.4, 0, 0.2, 1) shadow-2xl overflow-y-auto">
+        <div class="p-6">
+            <div class="flex items-center space-x-4 mb-10 pb-6 border-b border-gray-100">
+                <img src="images/stories/small/pic9.jpg" alt="Profile" class="w-14 h-14 rounded-full object-cover shadow-sm">
+                <div>
+                    <span class="text-xs text-muted font-medium">Good Morning</span>
+                    <h2 class="font-bold text-lg text-dark">M. Fayyadh Muwaffaq</h2>
+                </div>
+            </div>
+            <nav class="space-y-1">
+                <p class="text-xs font-bold text-gray-300 uppercase tracking-widest mb-4 px-2">Account Management</p>
+                <a href="#" class="flex items-center space-x-4 px-4 py-3 rounded-2xl text-gray-500 hover:bg-gray-50 hover:text-dark font-medium transition-colors">
+                    <i class="fa-solid fa-gear w-6 text-center text-lg text-primary"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="flex items-center space-x-4 px-4 py-3 rounded-2xl text-gray-500 hover:bg-gray-50 hover:text-dark font-medium transition-colors">
+                    <i class="fa-solid fa-clock-rotate-left w-6 text-center text-lg text-primary"></i>
+                    <span>Your Activity</span>
+                </a>
+                <a href="calendar.html" class="flex items-center space-x-4 px-4 py-3 rounded-2xl text-gray-500 hover:bg-gray-50 hover:text-dark font-medium transition-colors">
+                    <i class="fa-solid fa-bookmark w-6 text-center text-lg text-primary"></i>
+                    <span>Saved Events</span>
+                </a>
+                <button class="w-full flex items-center space-x-4 px-4 py-3 rounded-2xl text-gray-500 hover:bg-gray-50 hover:text-dark font-medium transition-colors text-left">
+                    <i class="fa-solid fa-moon w-6 text-center text-lg text-primary"></i>
+                    <span>Switch Appearance</span>
+                </button>
+                <div class="h-px bg-gray-100 mx-4 my-2"></div>
+                <a href="#" class="flex items-center space-x-4 px-4 py-3 rounded-2xl text-gray-500 hover:bg-gray-50 hover:text-dark font-medium transition-colors">
+                    <i class="fa-solid fa-circle-exclamation w-6 text-center text-lg text-primary"></i>
+                    <span>Report a problem</span>
+                </a>
+                <a href="login.html" class="flex items-center space-x-4 px-4 py-3 rounded-2xl text-red-500 hover:bg-red-50 font-bold transition-colors">
+                    <i class="fa-solid fa-right-from-bracket w-6 text-center text-lg"></i>
+                    <span>Log out</span>
+                </a>
+            </nav>
+            <div class="absolute bottom-6 left-0 right-0 text-center">
+                <p class="text-[10px] text-gray-400 font-medium">Circlan V2 &copy; 2026</p>
+            </div>
+        </div>
+    </aside>
 
     <!-- Scripts -->
     <script src="js/app.js"></script>

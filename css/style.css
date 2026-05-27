@@ -26,21 +26,24 @@
     z-index: 60;
 }
 
-.sidebar-desktop:hover { width: 260px; }
+.sidebar-desktop:hover, .sidebar-desktop.expanded {
+    width: 260px;
+}
 
 .sidebar-desktop .nav-link-item {
     display: flex;
     align-items: center;
-    height: 52px;
+    height: 56px; /* Unified height */
     margin: 4px 12px;
     border-radius: 16px;
     transition: all 0.2s ease;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 .sidebar-desktop .icon-wrapper {
     min-width: 56px;
-    height: 56px;
+    height: 56px; /* Match unified height */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,10 +57,11 @@
     font-weight: 600;
 }
 
-.sidebar-desktop:hover .menu-text {
+.sidebar-desktop:hover .menu-text, .sidebar-desktop.expanded .menu-text {
     opacity: 1;
     transform: translateX(0);
 }
+
 
 .main-container-responsive {
     transition: margin-left 0.3s ease;
