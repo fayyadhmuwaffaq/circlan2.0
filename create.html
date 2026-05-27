@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Circlan V2 - Create</title>
+    
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D9A05B',
+                        secondary: '#F4EAE1',
+                        dark: '#1a1a1a',
+                        surface: '#ffffff',
+                        muted: '#9ca3af'
+                    },
+                    backgroundImage: {
+                        'gradient-main': 'linear-gradient(180deg, #F4EAE1 0%, #FAFAFA 100%)',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Nunito Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'nav': '0 -1px 0 0 rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gradient-main bg-fixed font-sans min-h-screen pb-24 md:pb-0 overflow-x-hidden text-gray-800 antialiased selection:bg-primary selection:text-white">
+
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[100] bg-white flex items-center justify-center transition-opacity duration-500 ease-out">
+        <div class="relative w-16 h-16">
+            <div class="absolute inset-0 border-4 border-primary/20 rounded-full"></div>
+            <div class="absolute inset-0 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+        </div>
+    </div>
+
+    <!-- MOBILE HEADER -->
+    <header class="fixed top-0 left-0 right-0 z-40 glass h-16 flex md:hidden items-center px-5 justify-between">
+        <div class="flex items-center">
+            <a href="index.html" class="w-10 h-10 flex items-center justify-center text-dark -ml-2"><i class="fa-solid fa-chevron-left text-xl"></i></a>
+            <h1 class="text-xl font-bold text-dark ml-1">Create</h1>
+        </div>
+        <button class="text-primary font-bold text-sm">Post</button>
+    </header>
+
+    <!-- DESKTOP DYNAMIC SIDEBAR -->
+    <nav class="hidden md:flex fixed top-0 left-0 h-screen sidebar-desktop bg-white border-r border-gray-100 flex-col py-8 shadow-sm">
+        <div class="mb-10 flex items-center h-[52px] px-6">
+            <h1 class="text-2xl font-bold text-dark tracking-tighter italic menu-text">Circlan</h1>
+        </div>
+        <div class="flex-1 space-y-2">
+            <a href="index.html" class="nav-link-item text-gray-500 hover:bg-gray-50 hover:text-dark group">
+                <div class="icon-wrapper"><i class="fa-solid fa-house text-xl group-hover:scale-110 transition-transform"></i></div>
+                <span class="text-[16px] menu-text">Home</span>
+            </a>
+            <a href="calendar.html" class="nav-link-item text-gray-500 hover:bg-gray-50 hover:text-dark group">
+                <div class="icon-wrapper"><i class="fa-solid fa-calendar-days text-xl group-hover:scale-110 transition-transform"></i></div>
+                <span class="text-[16px] menu-text">Calendar</span>
+            </a>
+            <a href="notification.html" class="nav-link-item text-gray-500 hover:bg-gray-50 hover:text-dark group">
+                <div class="icon-wrapper relative">
+                    <i class="fa-regular fa-heart text-xl group-hover:scale-110 transition-transform"></i>
+                </div>
+                <span class="text-[16px] menu-text">Notifications</span>
+            </a>
+            <a href="create.html" class="nav-link-item bg-primary/10 text-primary group">
+                <div class="icon-wrapper"><i class="fa-solid fa-square-plus text-xl"></i></div>
+                <span class="text-[16px] font-bold menu-text">Create</span>
+            </a>
+            <a href="#" class="nav-link-item text-gray-500 hover:bg-gray-50 hover:text-dark group">
+                <div class="icon-wrapper"><i class="fa-solid fa-sitemap text-xl group-hover:scale-110 transition-transform"></i></div>
+                <span class="text-[16px] menu-text">Tree</span>
+            </a>
+            <a href="profile.html" class="nav-link-item text-gray-500 hover:bg-gray-50 hover:text-dark group">
+                <div class="icon-wrapper">
+                    <div class="w-7 h-7 rounded-full overflow-hidden border border-gray-300 group-hover:scale-110 transition-transform shadow-sm">
+                        <img src="../assets/images/stories/small/pic9.jpg" alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <span class="text-[16px] menu-text">Profile</span>
+            </a>
+        </div>
+        <div class="mt-auto">
+            <a href="#" class="nav-link-item text-gray-400 hover:bg-gray-50 hover:text-dark group">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-bars text-xl group-hover:scale-110 transition-transform"></i>
+                </div>
+                <span class="text-[16px] menu-text">More</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="main-container-responsive">
+        <main class="pt-20 md:pt-10 px-4 max-w-[600px] mx-auto min-h-screen">
+            
+            <!-- Type Toggle -->
+            <div class="flex p-1 bg-white/50 backdrop-blur-sm rounded-2xl mb-8 border border-white shadow-sm">
+                <button id="toggle-post" class="flex-1 py-2.5 text-sm font-bold rounded-xl transition-all bg-primary text-white shadow-md shadow-primary/20">
+                    Post
+                </button>
+                <button id="toggle-event" class="flex-1 py-2.5 text-sm font-bold rounded-xl transition-all text-muted hover:text-dark">
+                    Event
+                </button>
+            </div>
+
+            <!-- CREATE POST SECTION -->
+            <div id="section-post" class="animate-fade-in">
+                <div class="bg-white rounded-[32px] p-6 shadow-soft border border-gray-50">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <img src="images/stories/small/pic9.jpg" alt="Profile" class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <h3 class="text-sm font-bold text-dark">M. Fayyadh Muwaffaq</h3>
+                            <p class="text-[11px] text-muted font-medium italic">Posting to your circle</p>
+                        </div>
+                    </div>
+
+                    <textarea placeholder="What's on your mind?" class="w-full h-24 bg-gray-50 border-transparent rounded-xl py-3 px-4 focus:bg-white focus:border-primary/20 focus:ring-4 focus:ring-primary/5 transition-all outline-none text-sm font-medium resize-none" spellcheck="false"></textarea>
+
+                    <!-- Media Upload -->
+                    <div class="mt-4 border-2 border-dashed border-gray-100 rounded-2xl aspect-video flex flex-col items-center justify-center space-y-2 cursor-pointer hover:bg-gray-50 transition-colors group">
+                        <div class="w-12 h-12 rounded-full bg-secondary/50 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-image text-xl"></i>
+                        </div>
+                        <p class="text-xs font-bold text-muted uppercase tracking-wider">Add Photo / Video</p>
+                    </div>
+
+                    <div class="mt-8 flex items-center justify-between">
+                        <div class="flex items-center space-x-4 text-gray-400">
+                            <button class="hover:text-primary transition-colors"><i class="fa-solid fa-location-dot"></i></button>
+                            <button class="hover:text-primary transition-colors"><i class="fa-solid fa-user-tag"></i></button>
+                            <button class="hover:text-primary transition-colors"><i class="fa-solid fa-face-smile"></i></button>
+                        </div>
+                        <button class="hidden md:block bg-primary text-white px-8 py-2.5 rounded-xl text-sm font-bold shadow-md shadow-primary/20 hover:bg-primary/90 transition-all btn-scale">Create Post</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CREATE EVENT SECTION (Hidden by default) -->
+            <div id="section-event" class="hidden animate-fade-in">
+                <div class="bg-white rounded-[32px] p-6 shadow-soft border border-gray-50 space-y-6">
+                    <div>
+                        <label class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2 block">Event Title</label>
+                        <input type="text" placeholder="Add a name for your event" class="w-full bg-gray-50 border-transparent rounded-xl py-3 px-4 focus:bg-white focus:border-primary/20 focus:ring-4 focus:ring-primary/5 transition-all outline-none text-sm font-medium">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2 block">Date</label>
+                            <div class="relative">
+                                <i class="fa-regular fa-calendar absolute left-4 top-1/2 -translate-y-1/2 text-primary pointer-events-none"></i>
+                                <input type="date" class="w-full bg-gray-50 border-transparent rounded-xl py-3 pl-10 pr-4 focus:bg-white focus:border-primary/20 focus:ring-4 focus:ring-primary/5 transition-all outline-none text-sm font-medium appearance-none">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2 block">Time</label>
+                            <div class="relative">
+                                <i class="fa-regular fa-clock absolute left-4 top-1/2 -translate-y-1/2 text-primary pointer-events-none"></i>
+                                <input type="time" class="w-full bg-gray-50 border-transparent rounded-xl py-3 pl-10 pr-4 focus:bg-white focus:border-primary/20 focus:ring-4 focus:ring-primary/5 transition-all outline-none text-sm font-medium appearance-none">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2 block">Location</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-primary"></i>
+                            <input type="text" placeholder="Where will it happen?" class="w-full bg-gray-50 border-transparent rounded-xl py-3 pl-10 pr-4 focus:bg-white focus:border-primary/20 focus:ring-4 focus:ring-primary/5 transition-all outline-none text-sm font-medium">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2 block">Description</label>
+                        <textarea placeholder="What should everyone know?" class="w-full h-24 bg-gray-50 border-transparent rounded-xl py-3 px-4 focus:bg-white focus:border-primary/20 focus:ring-4 focus:ring-primary/5 transition-all outline-none text-sm font-medium resize-none"></textarea>
+                    </div>
+
+                    <button class="hidden md:block w-full bg-primary text-white py-4 rounded-xl text-sm font-bold shadow-md shadow-primary/20 hover:bg-primary/90 transition-all btn-scale">Schedule Event</button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <nav class="fixed bottom-0 left-0 right-0 glass-nav px-6 py-3 flex md:hidden items-center justify-between z-40 shadow-nav">
+        <a href="index.html" class="text-gray-400 btn-scale"><i class="fa-solid fa-house text-2xl"></i></a>
+        <a href="calendar.html" class="text-gray-400 btn-scale"><i class="fa-solid fa-calendar-days text-2xl"></i></a>
+        <!-- Active -->
+        <a href="create.html" class="text-primary btn-scale relative">
+            <i class="fa-solid fa-square-plus text-2xl"></i>
+            <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full"></div>
+        </a>
+        <a href="#" class="text-gray-400 btn-scale"><i class="fa-solid fa-sitemap text-2xl"></i></a>
+        <a href="profile.html" class="text-gray-400 btn-scale">
+            <img src="../assets/images/stories/small/pic9.jpg" alt="Profile" class="w-7 h-7 rounded-full border border-gray-200">
+        </a>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script>
+        // Toggle Logic
+        const btnPost = document.getElementById('toggle-post');
+        const btnEvent = document.getElementById('toggle-event');
+        const secPost = document.getElementById('section-post');
+        const secEvent = document.getElementById('section-event');
+        const mobileHeaderAction = document.querySelector('header .text-primary');
+
+        btnPost.addEventListener('click', () => {
+            // UI Toggle
+            btnPost.className = "flex-1 py-2.5 text-sm font-bold rounded-xl transition-all bg-primary text-white shadow-md shadow-primary/20";
+            btnEvent.className = "flex-1 py-2.5 text-sm font-bold rounded-xl transition-all text-muted hover:text-dark";
+            // Content Toggle
+            secPost.classList.remove('hidden');
+            secEvent.classList.add('hidden');
+            mobileHeaderAction.innerText = "Post";
+        });
+
+        btnEvent.addEventListener('click', () => {
+            // UI Toggle
+            btnEvent.className = "flex-1 py-2.5 text-sm font-bold rounded-xl transition-all bg-primary text-white shadow-md shadow-primary/20";
+            btnPost.className = "flex-1 py-2.5 text-sm font-bold rounded-xl transition-all text-muted hover:text-dark";
+            // Content Toggle
+            secEvent.classList.remove('hidden');
+            secPost.classList.add('hidden');
+            mobileHeaderAction.innerText = "Create";
+        });
+    </script>
+</body>
+</html>

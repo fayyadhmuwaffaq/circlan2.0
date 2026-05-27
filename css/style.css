@@ -96,6 +96,14 @@
 .btn-scale { transition: transform 0.1s ease-in-out; }
 .btn-scale:active { transform: scale(0.9); }
 
+/* Global Input Focus States */
+input:focus, textarea:focus {
+    border-color: #D9A05B !important;
+    background-color: #fff !important;
+    box-shadow: 0 0 0 4px rgba(217, 160, 91, 0.15) !important;
+    outline: none !important;
+}
+
 /* 4. CALENDAR SYSTEM */
 .calendar-grid {
     display: grid;
