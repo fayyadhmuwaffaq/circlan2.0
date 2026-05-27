@@ -166,8 +166,8 @@
         <div class="flex items-center space-x-3">
             <img src="images/stories/small/pic9.jpg" alt="My Profile" class="w-10 h-10 rounded-full object-cover">
             <div class="flex-1 relative">
-                <input type="text" placeholder="Add a comment..." class="w-full bg-gray-100 border-none rounded-full py-2.5 px-4 pr-12 text-sm focus:ring-2 focus:ring-primary/20 transition-all outline-none">
-                <button class="absolute right-3 top-1/2 -translate-y-1/2 text-primary font-bold text-sm hover:text-dark transition-colors disabled:opacity-50">
+                <input type="text" placeholder="Add a comment..." class="comment-input-field w-full bg-gray-100 border-none rounded-full py-2.5 px-4 pr-12 text-sm focus:ring-2 focus:ring-primary/20 transition-all outline-none">
+                <button class="comment-post-btn absolute right-3 top-1/2 -translate-y-1/2 text-primary font-bold text-sm hover:text-dark transition-colors disabled:opacity-50">
                     Post
                 </button>
             </div>
@@ -176,21 +176,6 @@
 
     <!-- Scripts -->
     <script src="js/app.js"></script>
-    <script>
-        // Simple logic for the input animation
-        const input = document.querySelector('input');
-        const postBtn = document.querySelector('button[class*="text-primary"]');
-        
-        input.addEventListener('input', (e) => {
-            if (e.target.value.trim().length > 0) {
-                postBtn.disabled = false;
-                postBtn.style.opacity = '1';
-            } else {
-                postBtn.disabled = true;
-                postBtn.style.opacity = '0.5';
-            }
-        });
-    </script>
 </body>
 </html> = '0.5';
             }

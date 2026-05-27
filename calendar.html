@@ -117,7 +117,7 @@
                 <div class="flex-1 mb-8 lg:mb-0">
                     <div class="bg-white rounded-[32px] p-6 shadow-soft border border-gray-100 animate-fade-in">
                         <div class="flex items-center justify-between mb-8 px-2">
-                            <h2 class="text-xl font-bold text-dark">Mei 2026</h2>
+                            <h2 class="text-xl font-bold text-dark italic">Mei 2026</h2>
                             <div class="flex space-x-2">
                                 <button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-50 text-muted"><i class="fa-solid fa-chevron-left text-sm"></i></button>
                                 <button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-50 text-muted"><i class="fa-solid fa-chevron-right text-sm"></i></button>
@@ -172,9 +172,14 @@
                                 <div class="w-10 h-10 rounded-2xl bg-secondary/50 flex items-center justify-center text-primary">
                                     <i id="card-icon" class="fa-solid fa-users text-lg"></i>
                                 </div>
-                                <button id="btn-save-toggle" class="text-primary hover:text-red-500 transition-colors btn-scale">
-                                    <i class="fa-solid fa-bookmark text-lg"></i>
-                                </button>
+                                <div class="flex items-center space-x-2">
+                                    <button id="btn-edit" class="hidden text-muted hover:text-primary transition-colors btn-scale">
+                                        <i class="fa-solid fa-pen-to-square text-lg"></i>
+                                    </button>
+                                    <button id="btn-save-toggle" class="text-primary hover:text-red-500 transition-colors btn-scale">
+                                        <i class="fa-solid fa-bookmark text-lg"></i>
+                                    </button>
+                                </div>
                             </div>
                             <h4 id="card-title" class="text-[15px] font-bold text-dark mb-1 leading-tight">Family Reunion 2026</h4>
                             <p id="card-loc" class="text-[12px] text-muted mb-4 flex items-center font-medium leading-relaxed">
@@ -186,7 +191,7 @@
                                     <img src="images/stories/small/pic3.jpg" class="w-6 h-6 rounded-full border-2 border-white object-cover">
                                     <div class="w-6 h-6 rounded-full bg-gray-100 border-2 border-white flex items-center justify-center text-[8px] font-bold text-muted">+8</div>
                                 </div>
-                                <span class="text-[10px] font-bold text-muted text-primary">Joining</span>
+                                <span class="text-[10px] font-bold text-muted italic text-primary">Joining</span>
                             </div>
                         </div>
 
@@ -219,93 +224,8 @@
         </a>
     </nav>
 
+    <!-- Scripts -->
     <script src="js/app.js"></script>
-    <script>
-        const days = document.querySelectorAll('.calendar-day:not(.text-gray-200)');
-        const panelTitle = document.getElementById('panel-title');
-        const eventBadge = document.getElementById('event-badge');
-        const cardEvent = document.getElementById('card-event');
-        const cardEmpty = document.getElementById('card-empty');
-        const emptyText = document.getElementById('empty-text');
-        const btnCreateEmpty = document.getElementById('btn-create-empty');
-        
-        const tabSaved = document.getElementById('tab-saved');
-        const tabMine = document.getElementById('tab-mine');
-
-        let currentTab = 'saved';
-        let selectedDate = '24';
-
-        const updateView = () => {
-            panelTitle.innerText = `${currentTab === 'saved' ? 'Saved' : 'My Events'} for ${selectedDate} Mei`;
-            
-            let hasEvent = false;
-            if (currentTab === 'saved' && (selectedDate === '24' || selectedDate === '12')) {
-                hasEvent = true;
-                document.getElementById('card-footer').classList.remove('hidden');
-                document.getElementById('btn-save-toggle').innerHTML = '<i class="fa-solid fa-bookmark text-lg"></i>';
-                
-                if(selectedDate === '12') {
-                    document.getElementById('card-title').innerText = "Photography Workshop";
-                    document.getElementById('card-loc').innerHTML = '<i class="fa-solid fa-location-dot mr-1.5 text-[10px]"></i> Kota Tua, Jakarta';
-                    document.getElementById('card-icon').className = "fa-solid fa-camera text-lg";
-                } else {
-                    document.getElementById('card-title').innerText = "Family Reunion 2026";
-                    document.getElementById('card-loc').innerHTML = '<i class="fa-solid fa-location-dot mr-1.5 text-[10px]"></i> Grand Ballroom, Jakarta';
-                    document.getElementById('card-icon').className = "fa-solid fa-users text-lg";
-                }
-            } else if (currentTab === 'mine' && selectedDate === '5') {
-                hasEvent = true;
-                document.getElementById('card-title').innerText = "Monthly Family Dinner";
-                document.getElementById('card-loc').innerHTML = '<i class="fa-solid fa-location-dot mr-1.5 text-[10px]"></i> Home';
-                document.getElementById('card-icon').className = "fa-solid fa-utensils text-lg";
-                document.getElementById('card-footer').classList.add('hidden');
-                document.getElementById('btn-save-toggle').innerHTML = '<i class="fa-solid fa-trash-can text-lg text-red-400"></i>';
-            }
-
-            if (hasEvent) {
-                cardEvent.classList.remove('hidden');
-                cardEmpty.classList.add('hidden');
-                eventBadge.innerText = '1 Event';
-                eventBadge.style.display = 'inline-block';
-            } else {
-                cardEvent.classList.add('hidden');
-                cardEmpty.classList.remove('hidden');
-                eventBadge.style.display = 'none';
-
-                if (currentTab === 'saved') {
-                    emptyText.innerText = "You haven't saved any events for this date.";
-                    btnCreateEmpty.classList.add('hidden');
-                } else {
-                    emptyText.innerText = "You haven't created any events for this date.";
-                    btnCreateEmpty.classList.remove('hidden');
-                }
-            }
-        };
-
-        days.forEach(day => {
-            day.addEventListener('click', () => {
-                days.forEach(d => d.classList.remove('active'));
-                day.classList.add('active');
-                selectedDate = day.innerText;
-                updateView();
-            });
-        });
-
-        tabSaved.addEventListener('click', () => {
-            currentTab = 'saved';
-            tabSaved.className = "flex-1 py-2 text-[11px] font-bold rounded-xl transition-all bg-primary text-white shadow-md";
-            tabMine.className = "flex-1 py-2 text-[11px] font-bold rounded-xl transition-all text-muted hover:text-dark";
-            updateView();
-        });
-
-        tabMine.addEventListener('click', () => {
-            currentTab = 'mine';
-            tabMine.className = "flex-1 py-2 text-[11px] font-bold rounded-xl transition-all bg-primary text-white shadow-md";
-            tabSaved.className = "flex-1 py-2 text-[11px] font-bold rounded-xl transition-all text-muted hover:text-dark";
-            updateView();
-        });
-
-        updateView();
-    </script>
+    <script src="js/calendar.js"></script>
 </body>
 </html>

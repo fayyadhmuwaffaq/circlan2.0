@@ -98,6 +98,23 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('[id$="-menu"], .post-dropdown-menu').forEach(menu => {
                 menu.classList.add('hidden');
             });
-        }
-    });
+            }
+
+            // 5. Comment Input Interaction (Global)
+            const commentInput = document.querySelector('.comment-input-field');
+            const commentPostBtn = document.querySelector('.comment-post-btn');
+
+            if (commentInput && commentPostBtn) {
+            commentInput.addEventListener('input', (e) => {
+                if (e.target.value.trim().length > 0) {
+                    commentPostBtn.disabled = false;
+                    commentPostBtn.style.opacity = '1';
+                } else {
+                    commentPostBtn.disabled = true;
+                    commentPostBtn.style.opacity = '0.5';
+                }
+            });
+            }
+            });
+
 });

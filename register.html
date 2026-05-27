@@ -141,17 +141,6 @@
 
     <!-- Scripts -->
     <script src="js/app.js"></script>
-    <script>
-        const passToggle = document.getElementById('toggle-reg-pass');
-        const passInput = document.getElementById('reg-password');
-        
-        if (passToggle && passInput) {
-            passToggle.addEventListener('click', () => {
-                const type = passInput.getAttribute('type') === 'password' ? 'text' : 'password';
-                passInput.setAttribute('type', type);
-                passToggle.innerHTML = type === 'password' ? '<i class="fa-regular fa-eye-slash"></i>' : '<i class="fa-regular fa-eye"></i>';
-            });
-        }
-    </script>
+    <script src="js/auth.js"></script>
 </body>
 </html>
