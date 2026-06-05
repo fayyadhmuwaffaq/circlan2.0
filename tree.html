@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Circlan V2 - Family Tree</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D9A05B',
+                        secondary: '#F4EAE1',
+                        dark: '#1a1a1a',
+                    },
+                    backgroundImage: {
+                        'gradient-main': 'linear-gradient(180deg, #F4EAE1 0%, #FAFAFA 100%)',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Nunito Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        #tree-viewport {
+            height: calc(100vh - 64px); /* Full height minus header */
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            background-image: radial-gradient(#D9A05B 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+        }
+        @media (min-width: 768px) {
+            #tree-viewport { height: 100vh; }
+        }
+    </style>
+</head>
+<body class="bg-gradient-main min-h-screen overflow-hidden font-sans antialiased">
+
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[100] bg-white flex items-center justify-center transition-opacity duration-500 ease-out">
+        <div class="relative w-16 h-16">
+            <div class="absolute inset-0 border-4 border-primary/20 rounded-full"></div>
+            <div class="absolute inset-0 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+        </div>
+    </div>
+
+    <!-- MOBILE HEADER (Removed to maximize canvas area) -->
+
+    <!-- DESKTOP DYNAMIC SIDEBAR -->
+    <nav class="hidden md:flex fixed top-0 left-0 h-screen sidebar-desktop bg-white border-r border-gray-100 flex-col py-8 shadow-sm">
+        <div class="mb-10 flex items-center h-[52px] px-6">
+            <h1 class="text-2xl font-bold text-dark tracking-tighter italic menu-text">Circlan</h1>
+        </div>
+        <div class="flex-1 space-y-2">
+            <a href="index.html" class="nav-link-item text-gray-500 hover:bg-gray-50 hover:text-dark group">
+                <div class="icon-wrapper"><i class="fa-solid fa-house text-xl group-hover:scale-110 transition-transform"></i></div>
+                <span class="text-[16px] menu-text">Home</span>
+            </a>
+            <a href="calendar.html" class="nav-link-item text-gray-500 hover:bg-gray-50 hover:text-dark group">
+                <div class="icon-wrapper"><i class="fa-solid fa-calendar-days text-xl group-hover:scale-110 transition-transform"></i></div>
+                <span class="text-[16px] menu-text">Calendar</span>
+            </a>
+            <a href="notification.html" class="nav-link-item text-gray-500 hover:bg-gray-50 hover:text-dark group">
+                <div class="icon-wrapper relative"><i class="fa-regular fa-heart text-xl group-hover:scale-110 transition-transform"></i></div>
+                <span class="text-[16px] menu-text">Notifications</span>
+            </a>
+            <a href="create.html" class="nav-link-item text-gray-500 hover:bg-gray-50 hover:text-dark group">
+                <div class="icon-wrapper"><i class="fa-regular fa-square-plus text-xl group-hover:scale-110 transition-transform"></i></div>
+                <span class="text-[16px] menu-text">Create</span>
+            </a>
+            <a href="tree.html" class="nav-link-item bg-primary/10 text-primary group">
+                <div class="icon-wrapper"><i class="fa-solid fa-sitemap text-xl"></i></div>
+                <span class="text-[16px] font-bold menu-text">Tree</span>
+            </a>
+            <a href="profile.html" class="nav-link-item text-gray-500 hover:bg-gray-50 hover:text-dark group">
+                <div class="icon-wrapper">
+                    <div class="w-7 h-7 rounded-full overflow-hidden border border-gray-300 group-hover:scale-110 transition-transform shadow-sm">
+                        <img src="images/stories/small/pic9.jpg" alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <span class="text-[16px] menu-text">Profile</span>
+            </a>
+        </div>
+        <div class="mt-auto relative" id="more-dropdown-container">
+            <button type="button" id="more-btn" class="w-full nav-link-item text-gray-400 hover:bg-gray-50 hover:text-dark group transition-all">
+                <div class="icon-wrapper"><i class="fa-solid fa-bars text-xl group-hover:scale-110 transition-transform"></i></div>
+                <span class="text-[16px] font-semibold menu-text">More</span>
+            </button>
+            <div id="more-menu" class="hidden absolute bottom-full left-0 mb-4 w-64 origin-bottom-left rounded-2xl bg-white shadow-2xl z-50 p-2 border border-gray-100 animate-fade-in">
+                <div class="py-1 space-y-1">
+                    <a href="#" class="flex items-center px-4 py-3 text-[13px] font-bold text-gray-700 hover:bg-secondary/30 rounded-xl transition-colors group"><i class="fa-solid fa-gear mr-4 w-5 text-center text-lg text-primary"></i><span>Settings</span></a>
+                    <a href="login.html" class="flex items-center px-4 py-3 text-[13px] font-black text-red-500 hover:bg-red-50 rounded-xl transition-colors group"><span>Log out</span></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="main-container-responsive">
+        <main id="tree-viewport" class="pt-16 md:pt-0">
+            <!-- The zoomable canvas -->
+            <div id="tree-canvas" style="width: 2000px; height: 2000px;" class="relative origin-center">
+                <!-- Lines Layer (SVG connections) -->
+                <svg id="lines-layer" class="absolute inset-0 w-full h-full pointer-events-none"></svg>
+                
+                <!-- Nodes Layer -->
+                <div id="nodes-layer" class="absolute inset-0 w-full h-full"></div>
+            </div>
+
+            <!-- UI Controls -->
+            <div class="absolute bottom-28 md:bottom-8 right-6 z-40 flex flex-col space-y-3">
+                <button onclick="window.location.reload()" class="w-12 h-12 bg-white rounded-2xl shadow-lg border border-gray-100 flex items-center justify-center text-dark hover:text-primary transition-all btn-scale">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                </button>
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 flex flex-col overflow-hidden">
+                    <button class="w-12 h-12 flex items-center justify-center text-dark hover:bg-gray-50 border-b border-gray-50"><i class="fa-solid fa-plus"></i></button>
+                    <button class="w-12 h-12 flex items-center justify-center text-dark hover:bg-gray-50"><i class="fa-solid fa-minus"></i></button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- MEMBER INFO MODAL -->
+    <div id="member-modal" class="hidden fixed inset-0 z-[70] flex items-center justify-center p-6 bg-black/40 backdrop-blur-sm">
+        <div class="modal-content bg-white w-full max-w-[350px] rounded-[40px] shadow-2xl overflow-hidden">
+            <div class="relative h-32 bg-primary flex items-center justify-center">
+                <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center text-white transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="w-24 h-24 rounded-full border-4 border-white absolute bottom-[-48px] shadow-lg overflow-hidden">
+                    <img src="images/stories/small/pic9.jpg" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="pt-16 pb-10 px-8 text-center">
+                <h2 id="modal-name" class="text-xl font-bold text-dark mb-1">...</h2>
+                <p id="modal-gender" class="text-xs font-bold text-muted uppercase tracking-widest mb-6">...</p>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
+                        <span class="text-xs font-bold text-gray-400">Status</span>
+                        <span id="modal-status" class="text-sm font-bold text-dark">...</span>
+                    </div>
+                    <button class="w-full bg-primary text-white py-4 rounded-2xl text-sm font-bold shadow-md shadow-primary/20 hover:bg-primary/90 transition-all btn-scale">
+                        Buka Profil
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <nav class="fixed bottom-0 left-0 right-0 glass-nav px-6 py-3 flex md:hidden items-center justify-between z-40 shadow-nav">
+        <a href="index.html" class="text-gray-400 btn-scale"><i class="fa-solid fa-house text-2xl"></i></a>
+        <a href="calendar.html" class="text-gray-400 btn-scale"><i class="fa-solid fa-calendar-days text-2xl"></i></a>
+        <a href="create.html" class="text-gray-400 btn-scale"><i class="fa-regular fa-square-plus text-2xl"></i></a>
+        <a href="tree.html" class="text-primary btn-scale relative">
+            <i class="fa-solid fa-sitemap text-2xl"></i>
+            <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full"></div>
+        </a>
+        <a href="profile.html" class="text-gray-400 btn-scale">
+            <img src="images/stories/small/pic9.jpg" alt="Profile" class="w-7 h-7 rounded-full border border-gray-200">
+        </a>
+    </nav>
+
+    <script src="js/app.js"></script>
+    <script src="js/tree.js"></script>
+</body>
+</html>
